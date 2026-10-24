@@ -11,6 +11,7 @@ declare const process: { env: Record<string, string | undefined>; cwd(): string 
 // deliberately NOT baked into this file, so clones/forks of this project can
 // run side-by-side on their own ports (pass BACKEND_PORT when launching).
 export default defineConfig({
+  base: process.env.VITE_BASE_PATH ?? "/",
   plugins: [react(), tailwindcss()],
   server: {
     // No full-screen error overlay. A preview is a dev server, but the people
