@@ -33,17 +33,19 @@ jobs:
           cache: pnpm
 
       - name: Install dependencies
+        working-directory: walk-hero
         run: pnpm install --frozen-lockfile
 
       - name: Build
         env:
           VITE_BASE_PATH: /${{ github.event.repository.name }}/
+        working-directory: walk-hero
         run: pnpm build
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: walk-hero/dist
 
   deploy:
     environment:
