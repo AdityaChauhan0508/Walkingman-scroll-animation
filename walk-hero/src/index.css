@@ -19,7 +19,7 @@ body {
   box-sizing: border-box;
 }
 
-.track{--wh:min(62vh,95vw);background:var(--color-canvas)}
+.track{--wh:min(68vh,82vw);background:var(--color-canvas)}
 .letter{opacity:0;transform:translateY(0.25em);transition:opacity .5s,transform .6s cubic-bezier(.2,.8,.2,1)}
 .letter.on{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.letter{transition:none}}

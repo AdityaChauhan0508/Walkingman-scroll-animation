@@ -64,6 +64,7 @@ export default function App() {
 
       let count = 0, fcount = 0;
       const setX = gsap.quickSetter(walker, "x", "px");
+      const setWalkerScale = gsap.quickSetter(walker, "scale");
       const setBand = gsap.quickSetter(band, "scaleX");
       const setBobY = gsap.quickSetter(bob, "y", "px");
       const setBobR = gsap.quickSetter(bob, "rotation", "deg");
@@ -79,6 +80,7 @@ export default function App() {
           const x = p * (vw - wW);
           const front = x + wW * 0.65;
           setX(x);
+          setWalkerScale(1.08 - p * 0.28);
           setBand(Math.min(1, front / vw));
           const phase = p * Math.PI * 2 * 8;
           setBobY(-Math.abs(Math.sin(phase)) * 8 * Math.min(1, p * 30));
@@ -99,6 +101,10 @@ export default function App() {
           }
         },
       });
+
+      return () => {
+        ScrollTrigger.removeEventListener("refreshInit", measure);
+      };
     }, root);
 
     const onResize = () => ScrollTrigger.refresh();
@@ -118,7 +124,7 @@ export default function App() {
           <div className="band absolute inset-x-0 top-1/2 h-[28vh] -translate-y-1/2 origin-left scale-x-0 bg-(--color-accent) will-change-transform" />
           <h1
             aria-label="Welcome Itzfizz"
-            className="font-display absolute inset-x-0 top-1/2 z-10 flex -translate-y-1/2 flex-wrap items-center px-4 text-[clamp(2.6rem,12vw,4.5rem)] leading-[0.95] font-extrabold tracking-wide sm:flex-nowrap sm:px-[3vw] sm:text-[clamp(1.8rem,7.4vw,8.5rem)]"
+            className="font-display absolute inset-x-0 top-1/2 z-20 flex -translate-y-1/2 flex-wrap items-center px-4 text-[clamp(2.6rem,12vw,4.5rem)] leading-[0.95] font-extrabold tracking-wide sm:flex-nowrap sm:px-[3vw] sm:text-[clamp(1.8rem,7.4vw,8.5rem)]"
           >
             {HEADLINE.map((c, i) =>
               c === " " ? (
@@ -141,11 +147,11 @@ export default function App() {
           </div>
 
           <div
-            className="walker absolute left-0 z-20 aspect-[1171/2062] pointer-events-none will-change-transform"
+            className="walker absolute left-0 z-10 aspect-[1171/2062] pointer-events-none will-change-transform"
             style={{ top: "50%", height: "var(--wh)", marginTop: "calc(var(--wh) / -2)" }}
           >
             <div className="bob h-full w-full will-change-transform" style={{ transformOrigin: "50% 100%" }}>
-              <img src="/img/walker.png" alt="Man walking with a rolled poster" className="h-full w-full select-none" draggable={false} />
+              <img src={`${import.meta.env.BASE_URL}img/walker.png`} alt="Man walking with a rolled poster" className="h-full w-full select-none" draggable={false} />
             </div>
           </div>
 
