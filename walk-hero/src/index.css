@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Cabinet Grotesk", system-ui, sans-serif;
+  --font-body: "Satoshi", system-ui, sans-serif;
+  --color-canvas: oklch(0.96 0.02 85);
+  --color-ink: oklch(0.2 0.05 260);
+  --color-accent: oklch(0.78 0.13 70);
+}
+
+html,
+body {
+  @apply bg-(--color-canvas) text-(--color-ink) font-body antialiased;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.track{--wh:min(62vh,95vw);background:var(--color-canvas)}
+.letter{opacity:0;transform:translateY(0.25em);transition:opacity .5s,transform .6s cubic-bezier(.2,.8,.2,1)}
+.letter.on{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.letter{transition:none}}
+.fact{transition:clip-path .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+.fact-top{clip-path:inset(0 0 100% 0);transform:translateY(-36px)}
+.fact-bottom{clip-path:inset(100% 0 0 0);transform:translateY(36px)}
+.fact.on{clip-path:inset(0 0 0 0);transform:none}
+@media (prefers-reduced-motion:reduce){.fact{transition:none}}

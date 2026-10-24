@@ -1,0 +1,10 @@
+{
+  "name": "Welcome Itzfizz",
+  "short_name": "Welcome Itzfizz",
+  "description": "A scroll-driven hero where a walking man unrolls the headline like a poster.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6f1e7",
+  "theme_color": "#f6f1e7",
+  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}
