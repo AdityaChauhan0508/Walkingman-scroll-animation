@@ -159,7 +159,7 @@ export default function App() {
         </section>
       </main>
       <footer className="px-6 py-10 text-center text-sm opacity-70">
-        Facts sourced from public agency profiles on Clutch, Crunchbase and SelectedFirms.
+        Facts sourced from web, Build by Aditya Chauhan . All rights reserved @2026.
       </footer>
     </>
   );
